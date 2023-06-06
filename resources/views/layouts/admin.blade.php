@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Dashboard') }}</title>
 
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous' referrerpolicy='no-referrer' />
 
@@ -23,7 +23,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-            <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">BoolPress</a>
+            <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Luca's Projects</a>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -47,28 +47,14 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{Route::currentRouteName() == 'admin.posts.index' ? 'bg-dark' : ''}}" href="{{route('admin.posts.index')}}">
-                                    <i class="fa-solid fa-thumbtack"></i>
-                                    {{__('Posts')}}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="#">
+                                <a class="nav-link {{Route::currentRouteName() == 'admin.projects.index' ? 'bg-dark' : ''}}" href="{{route('admin.projects.index')}}">
                                     <i class="fa-solid fa-bookmark"></i>
-                                    Categories
+                                    My Projects
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="#">
-                                    <i class="fa-solid fa-tags"></i>
-                                    Tags
-                                </a>
-                            </li>
-
                         </ul>
                     </div>
                 </nav>
-
                 <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
                     @yield('content')
                 </main>

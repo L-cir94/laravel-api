@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminProjectController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
@@ -19,8 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/admin', [ProjectController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
-    Route::get('/', [ProjectController::class, 'index'])->name('dashboard'); 
+    Route::get('/', [AdminProjectController::class,'index'])->name('dashboard');
+    Route::resource('projects', ProjectController::class);
 });
 
 

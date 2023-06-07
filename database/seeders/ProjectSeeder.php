@@ -19,12 +19,12 @@ class ProjectSeeder extends Seeder
     {
         for ($i = 0; $i < 10; $i++) {
 
-            $post = new Project();
-            $post->title = $faker->sentence(3);
-            $post->slug = Str::slug($post->title, '-');
-            $post->content = $faker->paragraphs(asText: true); 
-            $post->cover_image = $faker->imageUrl(category: 'Posts', format: 'jpg');
-            $post->save();
+            $project = new Project();
+            $project->title = $faker->sentence(3);
+            $project->slug = Str::slug($project->title, '-');
+            $project->content = $faker->paragraphs(asText: true); 
+            $project->cover_image = $faker->imageUrl(category: 'projects', format: 'jpg');
+            $project->save();
         }
     }
 }

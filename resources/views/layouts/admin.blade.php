@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Dashboard') }}</title>
+    <title>{{ config('Luca\'s projects', 'Dashboard') }}</title>
 
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous' referrerpolicy='no-referrer' />
 
@@ -47,9 +47,15 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{Route::currentRouteName() == 'admin.projects' ? 'bg-dark' : ''}}" href="{{route('admin.projects')}}">
+                                <a class="nav-link" href="{{route('admin.projects.index')}}">
                                     <i class="fa-solid fa-bookmark"></i>
                                     My Projects
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fa-solid fa-tag"></i>
+                                    Tags
                                 </a>
                             </li>
                         </ul>

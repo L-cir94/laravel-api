@@ -47,7 +47,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link {{Route::currentRouteName() == 'admin.projects' ? 'bg-dark' : ''}}" href="{{route('admin.projects')}}">
                                     <i class="fa-solid fa-bookmark"></i>
                                     My Projects
                                 </a>

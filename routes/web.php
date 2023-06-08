@@ -1,9 +1,8 @@
 <?php
-
+namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\AdminProjectController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\Admin\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,13 +15,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/',function (){
+
+Route::get('/', function () {
     return view('welcome');
 });
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-Route::resource('/projects',ProjectController::class);
+    Route::resource('/projects', ProjectController::class);
 });
 
 Route::middleware('auth')->group(function () {

@@ -2,10 +2,10 @@
 
 
 @section('content')
-<h1>Show posts table</h1>
+<h1>Show projects table</h1>
 <a class="btn btn-dark" href="{{route('admin.projects.create')}}" role="button">Create Project</a>
 
-@include('partials.session_message')
+{{-- @include('partials.session_message') --}}
 
 <div class="table-responsive">
     <table class="table table-striped

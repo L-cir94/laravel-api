@@ -6,7 +6,7 @@
 <h1 class="py-4">Create a new Post</h1>
 
 
-{{-- @include('partials.validation_errors') --}}
+@include('partials.validation_errors')
 
 <form action="{{route('admin.projects.store')}}" method="post">
     @csrf
@@ -18,7 +18,7 @@
     </div>
     <div class="mb-3">
         <label for="cover_image" class="form-label">Image</label>
-        <input type="text" class="form-control @error('cover_image') is-invalid @enderror" name="cover_image" id="cover_image" aria-describedby="cover_imageHelper" placeholder="Learn php">
+        <input type="text" class="form-control @error('cover_image') is-invalid @enderror" name="cover_image" id="cover_image" aria-describedby="cover_imageHelper" placeholder="Cover image URL">
         <small id="cover_imageHelper" class="form-text text-muted">Type the post cover_image max 150 characters - must be unique</small>
     </div>
 

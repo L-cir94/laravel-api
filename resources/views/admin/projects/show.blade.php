@@ -4,15 +4,15 @@
     <div class="container-md my-5">
         <div class="row py-5 shadow">
             <div class="col-6">
-                <img src="{{}}" class="card-img-top pe-5" alt="{{}}">
+                <img src="{{$project->cover_image}}" class="card-img-top pe-5" alt="">
             </div>
             <div class="col px-5 me-5">
                 <div class="card-body">
-                    <h2 class="card-title py-4">{{}}</h2>
+                    <h2 class="card-title py-4"></h2>
                     <div>
                         <span class="badge bg-info"></span>
                     </div>
-                    <p class="card-text p-2">{{}}</p>
+                    <p class="card-text p-2"></p>
                 </div>
             </div>
         </div>

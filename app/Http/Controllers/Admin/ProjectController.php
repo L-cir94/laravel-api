@@ -55,9 +55,9 @@ class ProjectController extends Controller
      * @param   \App\Models\Project $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show($project)
     {
-        
+        $project = Project::all();
         return view('admin.projects.show', compact('project'));
     }
     /**

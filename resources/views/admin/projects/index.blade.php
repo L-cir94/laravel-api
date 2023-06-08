@@ -17,7 +17,7 @@
 
             <tr>
                 <th>ID</th>
-                <th>Cover</th>
+                <th>Cover Image</th>
                 <th>Title</th>
                 <th>Slug</th>
                 <th>Actions</th>

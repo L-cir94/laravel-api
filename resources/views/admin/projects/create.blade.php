@@ -3,12 +3,12 @@
 
 @section('content')
 
-<h1 class="py-3">Create a new Post</h1>
+<h1 class="py-4">Create a new Post</h1>
 
 
-@include('partials.validation_errors')
+{{-- @include('partials.validation_errors') --}}
 
-<form action="{{route('admin.posts.store')}}" method="post">
+<form action="{{route('admin.projects.store')}}" method="post">
     @csrf
 
     <div class="mb-3">

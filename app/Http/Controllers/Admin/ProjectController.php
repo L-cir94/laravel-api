@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
+use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
@@ -15,7 +18,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-      return view('admin.projects.index', compact('projects'));
+        return view('admin.projects.index', compact('projects'));
     }
 
     /**
@@ -25,7 +28,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
@@ -34,9 +37,16 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
-        //
+
+        $val_data = $request->validated();
+        /*       dd($val_data); */
+        $slug = Project::genetareSlug($val_data['title']);
+        $val_data['slug'] = $slug;
+      /*   dd($val_data); */
+        Project::create($val_data);
+        return to_route('admin.projects.index')->with('message','Project created');
     }
 
     /**
@@ -68,7 +78,7 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProjectRequest $request, $id)
     {
         //
     }

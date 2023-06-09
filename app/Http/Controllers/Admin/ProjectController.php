@@ -28,7 +28,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        
+
         return view('admin.projects.create');
     }
 
@@ -45,9 +45,9 @@ class ProjectController extends Controller
         /*       dd($val_data); */
         $slug = Project::genetareSlug($val_data['title']);
         $val_data['slug'] = $slug;
-      /*   dd($val_data); */
+        /*   dd($val_data); */
         Project::create($val_data);
-        return to_route('admin.projects.index')->with('message','Project created');
+        return to_route('admin.projects.index')->with('message', 'Project created');
     }
 
     /**
@@ -58,7 +58,7 @@ class ProjectController extends Controller
      */
     public function show(/* $slug */Project $project)
     {
-      /*   $project = Project::where('slug', $slug)->first(); */
+        /*   $project = Project::where('slug', $slug)->first(); */
         return view('admin.projects.show', compact('project'));
     }
     /**
@@ -81,9 +81,11 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-     $val_data = $request->validated();
-     $project->update($val_data);
-     return to_route('admin.projects.index')->with('message', 'Project: ' . $project->title . ' Updated');
+        $val_data = $request->validated();
+        $slug = Project::genetareSlug($val_data['title']);
+        $val_data['slug'] = $slug;
+        $project->update($val_data);
+        return to_route('admin.projects.index')->with('message', 'Project: ' . $project->title . ' Updated');
     }
 
     /**

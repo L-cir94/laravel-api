@@ -79,9 +79,9 @@ class ProjectController extends Controller
      * @param  \App\Models\Project $project
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProjectRequest $request, $id)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+      dd($request->all(), $project);
     }
 
     /**

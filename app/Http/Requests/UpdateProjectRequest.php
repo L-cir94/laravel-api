@@ -24,7 +24,9 @@ class UpdateProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => ['required', 'unique:projects'],
+            'cover_image' => ['nullable', 'max:255'],
+            'content' => ['nullable']
         ];
     }
 }

@@ -28,6 +28,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        
         return view('admin.projects.create');
     }
 
@@ -55,9 +56,9 @@ class ProjectController extends Controller
      * @param   \App\Models\Project $project
      * @return \Illuminate\Http\Response
      */
-    public function show($project)
+    public function show(/* $slug */Project $project)
     {
-        $project = Project::all();
+      /*   $project = Project::where('slug', $slug)->first(); */
         return view('admin.projects.show', compact('project'));
     }
     /**
@@ -92,6 +93,6 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return to_route('admin.project.index')->with('message', 'valore cancellato correttamente');
+        return to_route('admin.projects.index')->with('message', 'Project: ' . $project->title . ' Deleted');
     }
 }

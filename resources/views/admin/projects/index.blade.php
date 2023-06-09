@@ -20,6 +20,7 @@
                     <th>Cover Image</th>
                     <th>Title</th>
                     <th>Slug</th>
+                    <th>Content</th>
                     <th>Actions</th>
 
                 </tr>
@@ -33,15 +34,25 @@
                         <td><img height="100" src="{{ $project->cover_image }}" alt="{{ $project->title }}"></td>
                         <td>{{ $project->title }}</td>
                         <td>{{ $project->slug }}</td>
+                        <td>{{ $project->content }}</td>
                         <td>
-                            <a href="{{ route('admin.projects.show', $project->slug) }}">VIEW</a>
-                            <a href="{{ route('admin.projects.edit', $project->slug) }}">EDIT</a>
-                            <!-- Modal trigger button -->
-                            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal"
+                            <div class="buttons d-flex gap-3">
+                                <button type="button" class="btn btn-primary btn-lg rounded-circle" data-bs-toggle="modal"
                                 data-bs-target="#modalId">
-                                Trash
+                                <a class="text-white" href="{{ route('admin.projects.show', $project->id) }}"><i
+                                        class="fa-solid fa-eye"></i></a>
                             </button>
-
+                            <button type="button" class="btn btn-primary btn-lg rounded-circle" data-bs-toggle="modal"
+                                data-bs-target="#modalId">
+                                <a class="text-white" href="{{ route('admin.projects.edit', $project->id) }}"><i
+                                        class="fa-solid fa-pen"></i></a>
+                            </button>
+                            <!-- Modal trigger button -->
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#modal-{{ $project->id }}">
+                                <i class="fa-solid fa-trash "> Delete</i>
+                            </button>
+                            </div>
                             <!-- Modal Body -->
                             <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
                             <div class="modal fade" id="modal-{{ $project->id }}" tabindex="-1" data-bs-backdrop="static"
@@ -51,18 +62,19 @@
                                     role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="modalTitle-{{ $project->id }}">
-                                                Delete this project</h5>
+                                            <h5 class="modal-title" id="modalTitle-{{ $project->id }}">Delete
+                                                {{ $project->title }}</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            Are you sure?
+                                            Sei sicur*?
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Annulla</button>
-                                            <form action="{{ route('admin.projects.destroy', $project->id) }}" method="post">
+                                            <form action="{{ route('admin.projects.destroy', $project->id) }}"
+                                                method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger ">Si</button>
@@ -71,13 +83,11 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <!-- Optional: Place to the bottom of scripts -->
                             <script>
                                 const myModal = new bootstrap.Modal(document.getElementById('{{ $project->id }}'), options)
                             </script>
-
+                        </td>
                     </tr>
                 @empty
                     <tr class="table-primary">

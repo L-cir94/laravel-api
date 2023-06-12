@@ -1,8 +1,12 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\TechnologyController;
+use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +27,8 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/projects', ProjectController::class);
+    Route::resource('/technologies', TechnologyController::class);
+    Route::resource('/types', TypeController::class);
 });
 
 Route::middleware('auth')->group(function () {

@@ -11,7 +11,6 @@
         <table class="table table-striped
     table-hover
     table-borderless
-    table-primary
     align-middle">
             <thead class="table-light">
 
@@ -28,7 +27,7 @@
             </thead>
             <tbody class="table-group-divider">
                 @forelse ($projects as $project)
-                    <tr class="table-primary">
+                    <tr class="table-white">
                         <td scope="row">{{ $project->id }}</td>
                         <td><img height="100" src="{{ $project->cover_image }}" alt="{{ $project->title }}"></td>
                         <td>{{ $project->title }}</td>

@@ -27,7 +27,6 @@ class UpdateTypeRequest extends FormRequest
         return [
            'name' => ['required', Rule::unique('types', 'name')->ignore($this->type), 'max:50'],
            'content' => 'max:150',
-           'slug' => 'active_url'
         ];
     }
 }

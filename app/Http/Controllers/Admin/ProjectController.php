@@ -22,8 +22,7 @@ class ProjectController extends Controller
         $technologies = Technology::all();
         $types = Type::all();
         $projects = Project::all();
-        dd($technologies);
-        return view('admin.projects.index', compact('projects','types'));
+        return view('admin.projects.index', compact('projects','types','technologies'));
     }
 
     /**
@@ -33,8 +32,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        $technologies = Technology::all();
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+        return view('admin.projects.create', compact('types','technologies'));
     }
 
     /**
@@ -47,7 +47,6 @@ class ProjectController extends Controller
     {
 
         $val_data = $request->validated();
-        /*       dd($val_data); */
         $slug = Project::genetareSlug($val_data['title']);
         $val_data['slug'] = $slug;
         /*   dd($val_data); */

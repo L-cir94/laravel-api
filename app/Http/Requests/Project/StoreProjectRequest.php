@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Project;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -27,7 +27,8 @@ class StoreProjectRequest extends FormRequest
             'title' => ['required', 'unique:projects'],
             'cover_image' => ['nullable', 'max:255'],
             'content' => ['nullable'],
-            'type_id' => ['exists:types,id']
+            'type_id' => ['exists:types,id'],
+            'technologies' => ['exists:technologies,id']
         ];
     }
 }

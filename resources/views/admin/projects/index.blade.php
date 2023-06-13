@@ -19,9 +19,10 @@
                     <th>ID</th>
                     <th>Cover Image</th>
                     <th>Title</th>
-                    <th>Slug</th>
                     <th>Content</th>
+                    <th>Type</th>
                     <th>Actions</th>
+                    
 
                 </tr>
             </thead>
@@ -31,8 +32,8 @@
                         <td scope="row">{{ $project->id }}</td>
                         <td><img height="100" src="{{ $project->cover_image }}" alt="{{ $project->title }}"></td>
                         <td>{{ $project->title }}</td>
-                        <td>{{ $project->slug }}</td>
                         <td>{{ $project->content }}</td>
+                        <td>{{ $project->type?->name}}</td>
                         <td>
                             <div class="buttons d-flex gap-3">
                                 <button type="button" class="btn btn-primary btn-lg rounded-circle" data-bs-toggle="modal"

@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -17,8 +18,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
+        $types = Type::all();
         $projects = Project::all();
-        return view('admin.projects.index', compact('projects'));
+        return view('admin.projects.index', compact('projects','types'));
     }
 
     /**
@@ -28,8 +30,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-
-        return view('admin.projects.create');
+        $types = Type::all();
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -68,8 +70,10 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Project $project)
+    
     {
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+        return view('admin.projects.edit', compact('project','types'));
     }
 
     /**
@@ -81,10 +85,12 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
+        
         $val_data = $request->validated();
         $slug = Project::genetareSlug($val_data['title']);
         $val_data['slug'] = $slug;
         $project->update($val_data);
+       
         return to_route('admin.projects.index')->with('message', 'Project: ' . $project->title . ' Updated');
     }
 

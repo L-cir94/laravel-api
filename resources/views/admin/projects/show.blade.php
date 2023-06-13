@@ -14,7 +14,8 @@
                         <span class="badge bg-info">{{$project->created_at}}</span>
                         <p>{{$project->content}}</p>
                     </div>
-                    <p class="card-text p-2"></p>
+                    <span class="badge bg-primary">{{$project->type?->name}}</span>
+                    
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 use App\Models\Type;
 use Illuminate\Support\Str;
-
+use Termwind\Components\Paragraph;
 
 class TypeSeeder extends Seeder
 {
@@ -25,6 +25,7 @@ class TypeSeeder extends Seeder
             $newType = new Type();
             $newType->name = $type;
             $newType->slug = Str::slug($newType->name, '-');
+            $newType->content = $faker->paragraph(2);
             $newType->save();
         }
     }

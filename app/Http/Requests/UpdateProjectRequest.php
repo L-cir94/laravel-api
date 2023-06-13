@@ -27,7 +27,8 @@ class UpdateProjectRequest extends FormRequest
         return [
             'title' => ['required', 'unique:projects'],
             'cover_image' => ['nullable', 'max:255'],
-            'content' => ['nullable']
+            'content' => ['nullable'],
+            'type_id' => ['exists:types,id']
         ];
     }
 }

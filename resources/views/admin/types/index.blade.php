@@ -2,8 +2,8 @@
 
 
 @section('content')
-    <h1>Show category table</h1>
-    <a class="btn btn-dark" href="{{ route('admin.types.create') }}" role="button">Create Category</a>
+    <h1>Show Types table</h1>
+    <a class="btn btn-dark" href="{{ route('admin.types.create') }}" role="button">Create New Type</a>
 
     @include('partials.session_message')
 

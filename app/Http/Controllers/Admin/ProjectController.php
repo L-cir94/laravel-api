@@ -43,13 +43,13 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProjectRequest $request)
+    public function store(StoreProjectRequest $request)//create
     {
 
         $val_data = $request->validated();
         $slug = Project::genetareSlug($val_data['title']);
         $val_data['slug'] = $slug;
-        /*   dd($val_data); */
+        /* dd($val_data); */
         Project::create($val_data);
         return to_route('admin.projects.index')->with('message', 'Project created');
     }
@@ -63,8 +63,8 @@ class ProjectController extends Controller
     public function show(/* $slug */Project $project)
     {
         /*   $project = Project::where('slug', $slug)->first(); */
-         $technologies = Technology::all();
-        return view('admin.projects.show', compact('project','technologies'));
+        /*  $technologies = Technology::all() */;
+        return view('admin.projects.show', compact('project'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -75,8 +75,10 @@ class ProjectController extends Controller
     public function edit(Project $project)
     
     {
+        
         $technologies = Technology::all();
         $types = Type::all();
+        
         return view('admin.projects.edit', compact('project','types','technologies'));
     }
 
@@ -94,6 +96,7 @@ class ProjectController extends Controller
         $slug = Project::genetareSlug($val_data['title']);
         $val_data['slug'] = $slug;
         $project->update($val_data);
+        /* dd($val_data); */
        
         return to_route('admin.projects.index')->with('message', 'Project: ' . $project->title . ' Updated');
     }

@@ -34,7 +34,11 @@
                         <td>{{ $project->title }}</td>
                         <td>{{ $project->content }}</td>
                         <td>{{ $project->type?->name}}</td>
-                        {{-- <td>{{ $project->technologies?->name}}</td> --}}
+                        <td>
+                            @foreach ($project->technologies as $technology)
+                                <span class="badge bg-primary">{{ $technology->name }} </span>
+                            @endforeach
+                        </td>
                         <td>
                             <div class="buttons d-flex gap-3">
                                 <button type="button" class="btn btn-primary btn-lg rounded-circle" data-bs-toggle="modal"

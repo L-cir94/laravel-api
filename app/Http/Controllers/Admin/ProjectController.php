@@ -22,7 +22,7 @@ class ProjectController extends Controller
         $technologies = Technology::all();
         $types = Type::all();
         $projects = Project::all();
-        return view('admin.projects.index', compact('projects','types','technologies'));
+        return view('admin.projects.index', compact('projects', 'types', 'technologies'));
     }
 
     /**
@@ -34,7 +34,7 @@ class ProjectController extends Controller
     {
         $technologies = Technology::all();
         $types = Type::all();
-        return view('admin.projects.create', compact('types','technologies'));
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -43,14 +43,17 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProjectRequest $request)//create
+    public function store(StoreProjectRequest $request) //create
     {
 
         $val_data = $request->validated();
         $slug = Project::genetareSlug($val_data['title']);
         $val_data['slug'] = $slug;
         /* dd($val_data); */
-        Project::create($val_data);
+        $newProject = Project::create($val_data);
+        if ($request->has('technologies')) {
+            $newProject->technologies()->attach($request->technologies);
+        }
         return to_route('admin.projects.index')->with('message', 'Project created');
     }
 
@@ -62,8 +65,8 @@ class ProjectController extends Controller
      */
     public function show(/* $slug */Project $project)
     {
-        /*   $project = Project::where('slug', $slug)->first(); */
-        /*  $technologies = Technology::all() */;
+            /*   $project = Project::where('slug', $slug)->first(); */
+            /*  $technologies = Technology::all() */;
 
         return view('admin.projects.show', compact('project'));
     }
@@ -74,13 +77,13 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Project $project)
-    
+
     {
-        
+
         $technologies = Technology::all();
         $types = Type::all();
-        
-        return view('admin.projects.edit', compact('project','types','technologies'));
+
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -92,13 +95,15 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        
+
         $val_data = $request->validated();
         $slug = Project::genetareSlug($val_data['title']);
         $val_data['slug'] = $slug;
         $project->update($val_data);
         /* dd($val_data); */
-       
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($request->technologies);
+        }
         return to_route('admin.projects.index')->with('message', 'Project: ' . $project->title . ' Updated');
     }
 

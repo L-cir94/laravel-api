@@ -64,6 +64,7 @@ class ProjectController extends Controller
     {
         /*   $project = Project::where('slug', $slug)->first(); */
         /*  $technologies = Technology::all() */;
+
         return view('admin.projects.show', compact('project'));
     }
     /**

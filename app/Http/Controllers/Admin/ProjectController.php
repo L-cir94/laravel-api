@@ -63,7 +63,8 @@ class ProjectController extends Controller
     public function show(/* $slug */Project $project)
     {
         /*   $project = Project::where('slug', $slug)->first(); */
-        return view('admin.projects.show', compact('project'));
+         $technologies = Technology::all();
+        return view('admin.projects.show', compact('project','technologies'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -74,8 +75,9 @@ class ProjectController extends Controller
     public function edit(Project $project)
     
     {
+        $technologies = Technology::all();
         $types = Type::all();
-        return view('admin.projects.edit', compact('project','types'));
+        return view('admin.projects.edit', compact('project','types','technologies'));
     }
 
     /**

@@ -15,6 +15,7 @@
                         <p>{{$project->content}}</p>
                     </div>
                     <span class="badge bg-primary">{{$project->type?->name}}</span>
+                    <span class="badge bg-primary">{{$project->technologies?->name}}</span>
                     
                 </div>
             </div>

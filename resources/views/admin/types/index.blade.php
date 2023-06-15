@@ -11,7 +11,6 @@
         <table class="table table-striped
     table-hover
     table-borderless
-    table-primary
     align-middle">
             <thead class="table-light">
 
@@ -24,7 +23,7 @@
             </thead>
             <tbody class="table-group-divider">
                 @forelse ($types as $type)
-                    <tr class="table-primary">
+                    <tr class="table-white">
                         <td scope="row">{{ $type->id }}</td>
                         <td>{{ $type->name }}</td>
                         <td>

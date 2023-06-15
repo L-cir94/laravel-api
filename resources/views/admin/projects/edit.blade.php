@@ -27,6 +27,10 @@
             <label for="content" class="form-label">Contenuto</label>
             <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="content" rows="3">{{old('content', $project->content)}}</textarea>
         </div>
+        <div class="mb-3">
+            <label for="repo" class="form-label">Nome repo</label>
+            <textarea class="form-control @error('repo') is-invalid @enderror" name="repo" id="repo" rows="3">{{old('repo', $project->repo)}}</textarea>
+        </div>
         <div class="form-group">
             <p>Seleziona i technology:</p>
             @foreach ($technologies as $technology)

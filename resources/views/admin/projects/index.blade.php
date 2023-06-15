@@ -38,7 +38,7 @@
                         <td>{{ $project->title }}</td>
                         <td>{{ $project->content }}</td>
                         <td>{{ $project->type?->name}}</td>
-                        <td>{{ $project->repo}}</td>
+                        <td><a href="{{ $project->repo}}" target="_blank">{{ $project->repo}}</a></td>
                         <td>
                             @foreach ($project->technologies as $technology)
                                 <span class="badge bg-primary">{{ $technology->name }} </span>

@@ -11,10 +11,10 @@ use Illuminate\Support\Str;
 class Project extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'content', 'cover_image', 'slug', 'type_id'];
+    protected $fillable = ['title', 'content', 'cover_image', 'slug', 'type_id', 'repo'];
     public static function createRepo($projectTitle)
     {
-        $repo = 'https://github.com/L-cir94/' . Str::slug($projectTitle, '-');
+        $repo = 'https://github.com/L-cir94/' . Str::slug($projectTitle, '-') . '.git';
         return $repo;
     }
     public static function genetareSlug($title)

@@ -9,7 +9,10 @@
         <h5 class="text-muted my-3">Add a new type</h5>
         <form action="{{ route('admin.types.store') }}" method="post">
             @csrf
-            <textarea name="content" id="content" cols="30" rows="10" placeholder="Insert the content here"></textarea>
+            <div class="mb-3">
+                <label for="content" class="form-label">Content</label>
+                <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="content" rows="3">{{old('content', $type->content)}}</textarea>
+            </div>
             <div class="mb-3">
                 <label for="type_id" class="form-label">Type</label>
                 <input type="text" required value="{{ old('name') }}" name="name" id="name"

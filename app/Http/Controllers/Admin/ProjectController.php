@@ -48,6 +48,7 @@ class ProjectController extends Controller
     {
         /* dd($request->all()); */
         $val_data = $request->validated();
+        $val_data['repo'] = Project::createRepo($val_data['title']);
         $slug = Project::genetareSlug($val_data['title']);
         $val_data['slug'] = $slug;
         /* dd($val_data); */

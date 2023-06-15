@@ -27,6 +27,11 @@
             <label for="content" class="form-label">Contenuto</label>
             <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="content" rows="3"></textarea>
         </div>
+        <div class="mb-3">
+            <label for="repo" class="form-label">Percorso repo</label>
+            <textarea class="form-control @error('repo') is-invalid @enderror" name="repo" id="repo" rows="3"></textarea>
+        </div>
+        
         <div class="form-group">
             <p>Seleziona le tecnologie utilizzate nel progetto:</p>
             @foreach ($technologies as $technology)

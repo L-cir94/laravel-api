@@ -5,20 +5,20 @@
     <div class="container-md my-5">
         <div class="row py-5 shadow">
             <div class="col-6">
-                <img src="{{$project->cover_image}}" class="card-img-top pe-5" alt="{{$project->cover_image}}">
+                <p class="card-text p-2">{{$technology->content}}</p>
             </div>
             <div class="col px-5 me-5">
                 <div class="card-body">
-                    <h2 class="card-title py-4">{{$project->title}}</h2>
+                    <h2 class="card-title py-4">{{$technology->name}}</h2>
                     <div>
-                        <span class="badge bg-info">{{$project->created_at}}</span>
-                        <p>{{$project->content}}</p>
+                        <span class="badge bg-info">{{$technology->created_at}}</span>
+                        <p>{{$technology->slug}}</p>
                     </div>
-                    <p class="card-text p-2"></p>
+                    
                 </div>
             </div>
         </div>
     </div>
 
-    <a class="btn btn-primary my-3" href="{{ route('admin.projects.index') }}" role="button">Return</a>
+    <a class="btn btn-primary my-3" href="{{ route('admin.technologies.index') }}" role="button">Return</a>
 @endsection

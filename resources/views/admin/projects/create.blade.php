@@ -18,7 +18,7 @@
         </div>
         <div class="mb-3">
             <label for="cover_image" class="form-label">Cover Image progetto</label>
-            <input type="text" class="form-control @error('cover_image') is-invalid @enderror" name="cover_image"
+            <input type="file" class="form-control @error('cover_image') is-invalid @enderror" name="cover_image"
                 id="cover_image" aria-describedby="cover_imageHelper" placeholder="Cover image URL">
             <small id="cover_imageHelper" class="form-text text-muted">Inserisci URL di eventuali immagini di copertina del progetto (must be unique)</small>
         </div>

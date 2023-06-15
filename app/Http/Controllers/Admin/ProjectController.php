@@ -60,7 +60,7 @@ class ProjectController extends Controller
             /* dd($imagePath); */
             $val_data['cover_image'] = $imagePath;
         }
-         dd($val_data);
+         /* dd($val_data); */
         return to_route('admin.projects.index')->with('message', 'Project created');
     }
 

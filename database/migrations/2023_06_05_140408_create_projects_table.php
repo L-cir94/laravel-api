@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', '150')->unique();
             $table->string('slug');
+            $table->string('repo')->nullable();
             $table->string('cover_image')->nullable();
             $table->text('content')->nullable();
             $table->timestamps();

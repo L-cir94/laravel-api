@@ -46,21 +46,22 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request) //create
     {
-
+        /* dd($request->all()); */
         $val_data = $request->validated();
         $slug = Project::genetareSlug($val_data['title']);
         $val_data['slug'] = $slug;
+        /* dd($val_data); */
+
+        if ($request->hasFile('cover_image')) {
+            $imagePath = Storage::put('uploads', $request->cover_image);
+            /* dd($imagePath); */
+            $val_data['cover_image'] = $imagePath;
+        }
         /* dd($val_data); */
         $newProject = Project::create($val_data);
         if ($request->has('technologies')) {
             $newProject->technologies()->attach($request->technologies);
         }
-        if($request->hasFile('cover_image')){
-            $imagePath = Storage::put('uploads', $request->cover_image);
-            /* dd($imagePath); */
-            $val_data['cover_image'] = $imagePath;
-        }
-         /* dd($val_data); */
         return to_route('admin.projects.index')->with('message', 'Project created');
     }
 
@@ -104,10 +105,19 @@ class ProjectController extends Controller
     {
 
         $val_data = $request->validated();
+        if ($request->hasFile('cover_image')) {
+            if ($project->cover_image) {
+                Storage::delete($project->cover_image);
+            }
+            $imagePath = Storage::put('uploads', $request->cover_image);
+            /* dd($imagePath); */
+            $val_data['cover_image'] = $imagePath;
+        }
         $slug = Project::genetareSlug($val_data['title']);
         $val_data['slug'] = $slug;
         $project->update($val_data);
         /* dd($val_data); */
+
         if ($request->has('technologies')) {
             $project->technologies()->sync($request->technologies);
         }
@@ -122,6 +132,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if ($project->cover_image) {
+            Storage::delete($project->cover_image);
+        }
         $project->delete();
         return to_route('admin.projects.index')->with('message', 'Project: ' . $project->title . ' Deleted');
     }

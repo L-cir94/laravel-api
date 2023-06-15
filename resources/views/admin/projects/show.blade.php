@@ -5,11 +5,12 @@
     <div class="container-md my-5">
         <div class="row py-5 shadow">
             <div class="col-6">
-                <img src="{{$project->cover_image}}" class="card-img-top pe-5" alt="{{$project->cover_image}}">
+                <img height="100"src="{{ asset('storage/' . $project->cover_image)}}" alt="{{ $project->title }}">
             </div>
             <div class="col px-5 me-5">
                 <div class="card-body">
                     <h2 class="card-title py-4">{{$project->title}}</h2>
+                    <p>{{$project->repo}}</p>
                     <div>
                         <span class="badge bg-info">{{$project->created_at}}</span>
                         <p>{{$project->content}}</p>

@@ -20,6 +20,7 @@
                     <th>Title</th>
                     <th>Content</th>
                     <th>Type</th>
+                    <th>Repo</th>
                     <th>Technologies</th>
                     <th>Actions</th>
                     
@@ -37,6 +38,7 @@
                         <td>{{ $project->title }}</td>
                         <td>{{ $project->content }}</td>
                         <td>{{ $project->type?->name}}</td>
+                        <td>{{ $project->repo}}</td>
                         <td>
                             @foreach ($project->technologies as $technology)
                                 <span class="badge bg-primary">{{ $technology->name }} </span>

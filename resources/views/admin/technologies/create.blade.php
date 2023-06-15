@@ -2,35 +2,23 @@
 
 
 @section('content')
-
-<h1 class="py-4">Create a new Post</h1>
-
-
-@include('partials.validation_errors')
-
-<form action="{{route('admin.projects.store')}}" method="post">
-    @csrf
-
-    <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" aria-describedby="titleHelper" placeholder="Learn php">
-        <small id="titleHelper" class="form-text text-muted">Type the post title max 150 characters - must be unique</small>
-    </div>
-    <div class="mb-3">
-        <label for="cover_image" class="form-label">Image</label>
-        <input type="text" class="form-control @error('cover_image') is-invalid @enderror" name="cover_image" id="cover_image" aria-describedby="cover_imageHelper" placeholder="Cover image URL">
-        <small id="cover_imageHelper" class="form-text text-muted">Type the post cover_image max 150 characters - must be unique</small>
-    </div>
-
-    <div class="mb-3">
-        <label for="content" class="form-label">Content</label>
-        <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="content" rows="3"></textarea>
-    </div>
+    <h1 class="py-4">Create a new Technology</h1>
 
 
-    <button type="submit" class="btn btn-dark">Save</button>
+    @include('partials.validation_errors')
 
-</form>
+    <form action="{{ route('admin.technologies.store') }}" method="post">
+        @csrf
 
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
+                aria-describedby="nameHelper" placeholder="Learn php">
+            <small id="nameHelper" class="form-text text-muted">Type the project name max 150 characters - must be
+                unique</small>
+        </div>
+        <a class="btn btn-primary my-3" href="{{ route('admin.technologies.index') }}" role="button">Return</a>
+        <button type="submit" class="btn btn-dark">Save</button>
 
+    </form>
 @endsection

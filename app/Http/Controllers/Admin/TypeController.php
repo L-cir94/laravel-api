@@ -43,7 +43,7 @@ class TypeController extends Controller
         $slug = Type::generateSlug($val_data['name']);
         $val_data['slug'] = $slug;
         Type::create($val_data);
-        return to_route('admin.types.index')->with('message', "Type: "  . " created succesfully");
+        return to_route('admin.types.index')->with('message', "Type: " . $val_data['name'] . " created succesfully");
     }
 
     /**

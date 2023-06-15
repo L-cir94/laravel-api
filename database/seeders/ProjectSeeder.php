@@ -22,9 +22,9 @@ class ProjectSeeder extends Seeder
             $project = new Project();
             $project->title = $faker->sentence(3);
             $project->slug = Str::slug($project->title, '-');
-            $project->content = $faker->paragraphs(asText: true); 
+            $project->content = $faker->paragraphs(asText: true);
             $project->repo = Project::createRepo($project->title);
-            $project->cover_image = $faker->imageUrl(category: 'projects', format: 'jpg');
+            $project->cover_image = 'placeholders/' . $faker->image('storage/app/public/placeholder', fullPath: false, category: 'projects', word: $project->title, gray: true);
             $project->save();
         }
     }

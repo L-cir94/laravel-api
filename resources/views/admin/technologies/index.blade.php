@@ -2,8 +2,8 @@
 
 
 @section('content')
-    <h1>Show projects table</h1>
-    <a class="btn btn-dark" href="{{ route('admin.projects.create') }}" role="button">Create Project</a>
+    <h1>Show technologies table</h1>
+    <a class="btn btn-dark" href="{{ route('admin.technologies.create') }}" role="button">Create New Technology</a>
 
     @include('partials.session_message')
 
@@ -11,38 +11,33 @@
         <table class="table table-striped
     table-hover
     table-borderless
-    table-primary
     align-middle">
             <thead class="table-light">
 
                 <tr>
                     <th>ID</th>
-                    <th>Cover Image</th>
-                    <th>Title</th>
+                    <th>Name</th>
                     <th>Slug</th>
-                    <th>Content</th>
                     <th>Actions</th>
-
                 </tr>
             </thead>
             <tbody class="table-group-divider">
                 @forelse ($technologies as $technology)
-                    <tr class="table-primary">
+                    <tr class="">
                         <td scope="row">{{ $technology->id }}</td>
-                        <td><img height="100" src="{{ $technology->cover_image }}" alt="{{ $technology->title }}"></td>
-                        <td>{{ $technology->title }}</td>
+                        <td>{{ $technology->name }}</td>
                         <td>{{ $technology->slug }}</td>
-                        <td>{{ $technology->content }}</td>
+        
                         <td>
                             <div class="buttons d-flex gap-3">
                                 <button type="button" class="btn btn-primary btn-lg rounded-circle" data-bs-toggle="modal"
                                 data-bs-target="#modalId">
-                                <a class="text-white" href="{{ route('admin.technologys.show', $technology->id) }}"><i
+                                <a class="text-white" href="{{ route('admin.technologies.show', $technology->id) }}"><i
                                         class="fa-solid fa-eye"></i></a>
                             </button>
                             <button type="button" class="btn btn-primary btn-lg rounded-circle" data-bs-toggle="modal"
                                 data-bs-target="#modalId">
-                                <a class="text-white" href="{{ route('admin.technologys.edit', $technology->id) }}"><i
+                                <a class="text-white" href="{{ route('admin.technologies.edit', $technology->id) }}"><i
                                         class="fa-solid fa-pen"></i></a>
                             </button>
                             <!-- Modal trigger button -->
@@ -71,7 +66,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Annulla</button>
-                                            <form action="{{ route('admin.technologys.destroy', $technology->id) }}"
+                                            <form action="{{ route('admin.technologies.destroy', $technology->id) }}"
                                                 method="post">
                                                 @csrf
                                                 @method('DELETE')
@@ -89,7 +84,7 @@
                     </tr>
                 @empty
                     <tr class="table-primary">
-                        <td scope="row">No projects yet.</td>
+                        <td scope="row">No technologies yet.</td>
                     </tr>
                 @endforelse
             </tbody>

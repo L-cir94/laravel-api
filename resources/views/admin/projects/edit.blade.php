@@ -7,7 +7,7 @@
 
     @include('partials.validation_errors')
 
-    <form action="{{ route('admin.projects.update', $project) }}" method="post">
+    <form action="{{ route('admin.projects.update', $project) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="mb-3">

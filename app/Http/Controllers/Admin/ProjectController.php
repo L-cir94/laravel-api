@@ -9,6 +9,7 @@ use App\Models\Project;
 use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -54,6 +55,12 @@ class ProjectController extends Controller
         if ($request->has('technologies')) {
             $newProject->technologies()->attach($request->technologies);
         }
+        if($request->hasFile('cover_image')){
+            $imagePath = Storage::put('uploads', $request->cover_image);
+            /* dd($imagePath); */
+            $val_data['cover_image'] = $imagePath;
+        }
+         dd($val_data);
         return to_route('admin.projects.index')->with('message', 'Project created');
     }
 

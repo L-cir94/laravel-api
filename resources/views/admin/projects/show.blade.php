@@ -10,7 +10,7 @@
             <div class="col px-5 me-5">
                 <div class="card-body">
                     <h2 class="card-title py-4">{{$project->title}}</h2>
-                    <p>{{$project->repo}}</p>
+                    <a href="{{ $project->repo}}" target="_blank">{{ $project->repo}}</a>
                     <div>
                         <span class="badge bg-info">{{$project->created_at}}</span>
                         <p>{{$project->content}}</p>

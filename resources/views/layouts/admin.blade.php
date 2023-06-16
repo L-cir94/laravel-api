@@ -24,7 +24,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar bg-dark border-bottom border-bottom-dark shadow-sm"
+        <nav class="navbar navbar-expand-md navbar bg-success border-bottom border-bottom-success shadow-sm"
             data-bs-theme="dark">
             <div class="container">
 
@@ -67,7 +67,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item"
-                                        href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
+                                        href="{{ url('admin') }}">{{ __('Dashboard') }}</a>
                                     <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profile') }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();

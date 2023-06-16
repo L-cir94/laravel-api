@@ -21,7 +21,7 @@ return [
 
     'allowed_origins' => ['*'],
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => [env('APP_FRONTEND_URL'),'http://localhost:5175/'],
 
     'allowed_headers' => ['*'],
 

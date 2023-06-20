@@ -11,7 +11,7 @@
             @csrf
             <div class="mb-3">
                 <label for="content" class="form-label">Content</label>
-                <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="content" rows="3">{{old('content', $type->content)}}</textarea>
+                <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="content" rows="3"></textarea>
             </div>
             <div class="mb-3">
                 <label for="type_id" class="form-label">Type</label>

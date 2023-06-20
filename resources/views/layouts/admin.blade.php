@@ -24,15 +24,13 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar bg-success border-bottom border-bottom-success shadow-sm"
+        <nav class="navbar navbar-expand-md navbar bg-dark border-bottom border-bottom-success shadow-sm"
             data-bs-theme="dark">
             <div class="container">
 
-                <img class="img-fluid rounded-circle me-4" width="40"
+                <img class="img-fluid rounded-5 me-4" width="40"
                     src="{{ Vite::asset('resources\img\Foto Luca 3.jpg') }}" alt="">
                 <h6 class="text-white">Luca's projects</h6>
-                <input class="form-control form-control-dark w-100" type="text" placeholder="Search"
-                    aria-label="Search">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -40,15 +38,14 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
-                        </li>
-                    </ul>
-                    <!-- Right Side Of Navbar -->
+
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
+                            </li>
+                        
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

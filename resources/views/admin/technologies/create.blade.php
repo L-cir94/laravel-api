@@ -16,7 +16,7 @@
                 aria-describedby="nameHelper" placeholder="Learn php">
             <small id="nameHelper" class="form-text text-muted">Type the project name max 150 characters - must be
                 unique</small>
-        </div>{{-- ciaoo questo è un commento --}};
+        </div>
         <a class="btn btn-primary my-3" href="{{ route('admin.technologies.index') }}" role="button">Return</a>
         <button type="submit" class="btn btn-dark">Save</button>
 
